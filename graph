@@ -1,0 +1,8 @@
+#ifndef OITL_GRAPH
+#define OITL_GRAPH
+
+#include "assets/oitl_basic.hpp"
+#include "assets/graph.hpp"
+#include "assets/graph_algo.hpp"
+
+#endif

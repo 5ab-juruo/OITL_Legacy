@@ -1,0 +1,8 @@
+#ifndef OITL_DISJOINT_SET
+#define OITL_DISJOINT_SET 1
+
+#include "assets/oitl_basic.hpp"
+#include "assets/disjoint_set.hpp"
+#include "assets/presistent_disjoint_set.hpp"
+
+#endif

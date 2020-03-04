@@ -1,0 +1,7 @@
+#ifndef OITL_SEGMENT_TREE
+#define OITL_SEGMENT_TREE
+
+#include "assets/oitl_basic.hpp"
+#include "assets/seg_tree.hpp"
+
+#endif

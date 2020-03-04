@@ -1,0 +1,12 @@
+#ifndef OITL_PRESISTENTS
+#define OITL_PRESISTENTS
+
+#include "oitl_basic.hpp"
+#include "bad_assert.hpp"
+
+#include "assets/presistent_segment_tree.hpp"
+#include "assets/presistent_array.hpp"
+#include "assets/presistent_disjoint_set.hpp"
+#include "assets/presistent_trie.hpp"
+
+#endif

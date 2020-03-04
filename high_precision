@@ -1,0 +1,7 @@
+#ifndef OITL_HIGH_PRECISION
+#define OITL_HIGH_PRECISION
+
+#include "assets/longint.hpp"
+#include "assets/decimal.hpp"
+
+#endif
