@@ -2,6 +2,6 @@
 #define OITL_SEGMENT_TREE
 
 #include "assets/oitl_basic.hpp"
-#include "assets/seg_tree.hpp"
+#include "assets/segment_tree.hpp"
 
 #endif
