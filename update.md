@@ -8,6 +8,8 @@ OITL is a source-open project which means you can join our development!
 
 Only use GitHub and Pull-Request, you can make OITL better!
 
+p.s. `guide.md` may exists some other classes. It may show what I'll update next time (^_^).
+
 ---
 
 New features:
