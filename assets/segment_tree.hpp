@@ -24,7 +24,7 @@ namespace oitl
 	{
 		private:
 			
-			val_t __tr[n<<2], __add[n<<2];
+			val_t __tr[n<<2];
 			const __id_type __lim;
 			calc __calc;
 			
