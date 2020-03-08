@@ -20,7 +20,9 @@ p.s. You shouldn't use the libraries that I didn't mentioned in the update log. 
 
 ### Full update log in v1.0
 
+#### v1.0.0 Pre-test Upd_1
 
+Constructing.
 
 #### v1.0.0 Pre-test Upd_0
 
