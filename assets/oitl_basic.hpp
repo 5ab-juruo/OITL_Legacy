@@ -1,7 +1,7 @@
 #ifndef OITL_BASIC_HPP
 #define OITL_BASIC_HPP
 
-#define OITL_UPD 20200304L
+#define OITL_UPD 20200309L
 
 #if defined(__cplusplus) && __cplusplus >= 201103L
 #define OITL_CONSTEXPR constexpr

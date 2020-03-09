@@ -83,7 +83,7 @@ namespace oitl
 			{
 				if (__lp <= __id_l && __id_r <= __rp)
 				{
-					__tag[__current_id] = __calc_op(__tag[__current_cnt], __val);
+					__tag[__current_id] = __calc_op(__tag[__current_id], __val);
 					return;
 				}
 
@@ -108,6 +108,11 @@ namespace oitl
 					return __calc_op(__tag[__current_id], __query(__pos, __id_l, __mid, __lson(__current_id)));
 				else
 					return __calc_op(__tag[__current_id], __query(__pos, __mid + 1, __id_r, __rson(__current_id)));
+			}
+			
+			__vtype __query(__id_type __lp, __id_type __rp, __id_type __id_l, __id_type __id_r, __id_type __current_id)
+			{
+				
 			}
 
 		public:
@@ -147,7 +152,10 @@ namespace oitl
 				return __query(__pos, 1, __n, 1);
 			}
 			
-			
+			__vtype query(__id_type __id_l, __id_type __id_r)
+			{
+				__vtype(__id_l, __id_r, 1, __n, 1);
+			}
 	}
 	
 	/*
