@@ -11,7 +11,7 @@
 ### oitl/segment_tree
 这个库里面有各种各样的线段树。
 #### class segment_tree | oitl/assets/segment_tree.hpp
-最基本的线段树，基于 zkw 线段树实现。
+最基本的线段树，基于递归式线段树实现。
 
 定义：`template<int __s, typename __vtype = long long, typename __calc = plus<__vtype> > class segment_tree`
 

@@ -37,6 +37,7 @@ namespace oitl
 
 			std::vector<__vtype> __tr, __tag;
 			__id_type __tree_size;
+			__calc __calc_op;
 
 			inline __id_type __lson(__id_type __id) { return (__id << 1); }
 			inline __id_type __rson(__id_type __id) { return (__id << 1) | 1; }
@@ -56,11 +57,57 @@ namespace oitl
 
 				__build(__begin, __lp, __mid, __lson(__current_id));
 				__build(__begin, __mid + 1, __rp, __rson(__current_id));
+
+				__tr[__current_id] = __calc_op(__tr[__lson(__current_id)], __tr[__rson(__current_id)]);
 			}
 
 			void __modify(__id_type __id, __id_type __id_l, __id_type __id_r, __id_type __current_id, __vtype __val)
 			{
+				if (__id_l == __id_r)
+				{
+					__tr[__current_id] = __val;
+					return;
+				}
+
+				__id_type __mid = (__id_l + __id_r) >> 1;
+
+				if (__id_l <= __id && __id <= __mid)
+					modify(__id, __id_l, __mid, __lson(__current_id), __val);
+				else
+					modify(__id, __mid + 1, __r, __rson(__current_id), __val);
 				
+				__tr[__current_id] = __calc_op(__tr[__lson(__current_id)], __tr[__rson(__current_id)]);
+			}
+
+			void __modify(__id_type __lp, __id_type __rp, __id_type __id_l, __id_type __id_r, __id_type __current_id, __vtype __val)
+			{
+				if (__lp <= __id_l && __id_r <= __rp)
+				{
+					__tag[__current_id] = __calc_op(__tag[__current_cnt], __val);
+					return;
+				}
+
+				__id_type __mid = (__id_l + __id_r) >> 1;
+
+				if (__lp <= __mid && __id_l <= __rp)
+					__modify(__lp, __rp, __id_l, __mid, __lson(__current_id), __val);
+				if (__lp <= __id_r && __mid < __rp)
+					__modify(__lp, __rp, __mid + 1, __id_r, __rson(__current_id), __val));
+			}
+
+			__vtype __query(__id_type __pos, __id_type __id_l, __id_type __id_r, __id_type __current_id)
+			{
+				if (__id_l == __id_r)
+				{
+					return __calc_op(__tr[__current_id], __tag[__current_id]);
+				}
+
+				__id_type __mid = (__id_l + __id_r) >> 1;
+
+				if (__id_l <= pos && pos <= __id_r)
+					return __calc_op(__tag[__current_id], __query(__pos, __id_l, __mid, __lson(__current_id)));
+				else
+					return __calc_op(__tag[__current_id], __query(__pos, __mid + 1, __id_r, __rson(__current_id)));
 			}
 
 		public:
@@ -86,7 +133,21 @@ namespace oitl
 			~segment_tree() { }
 
 			void modify(__id_type __id, __vtype __val)
+			{
+				__modify(__id, 1, __n, 1, __val);
+			}
 
+			void modify(__id_type __lp, __id_type __rp, __vtype __val)
+			{
+				__modify(__lp, __rp, 1, __n, 1, __val);
+			}
+
+			__vtype query(__id_type __pos)
+			{
+				return __query(__pos, 1, __n, 1);
+			}
+			
+			
 	}
 	
 	/*

@@ -24,6 +24,8 @@ p.s. You shouldn't use the libraries that I didn't mentioned in the update log. 
 
 Constructing.
 
+Started the reconstruction of recursive-segment_tree.
+
 #### v1.0.0 Pre-test Upd_0
 
 construct classes.
