@@ -2,13 +2,14 @@
 #define OITL_SEG_TREE_HPP 1
 
 #include <functional>
+#include <vector>
 #include "bad_assert.hpp"
 
 namespace oitl
 {
 	namespace __oitl_builtin
 	{
-		__id_type __calc(__id_type __n)
+		OITL_CONSTEXPR __id_type __calc_size(__id_type __n)
 		{
 			__id_type __ret = 1;
 			
@@ -17,8 +18,78 @@ namespace oitl
 			
 			return __ret;
 		}
+
+		OITL_CONSTEXPR __id_type __calc_size2(__id_type __n)
+		{
+			__id_type __ret = 1;
+			
+			while (__ret <= __n)
+				__ret <<= 1;
+			
+			return __ret << 1;
+		}
+	}
+
+	template<__id_type __n, typename __vtype, typename __calc = std::plus<__vtype> >
+	class segment_tree
+	{
+		private:
+
+			std::vector<__vtype> __tr, __tag;
+			__id_type __tree_size;
+
+			inline __id_type __lson(__id_type __id) { return (__id << 1); }
+			inline __id_type __rson(__id_type __id) { return (__id << 1) | 1; }
+
+			template<typename __iterator_t>
+			void __build(__iterator_t __begin, __id_type __lp, __id_type __rp, __id_type __current_id)
+			{
+				__tag[__current_id] = 0;
+
+				if (__lp == __rp)
+				{
+					__tr[__current_id] = *(__begin + __lp - 1);
+					return;
+				}
+
+				__id_type __mid = (__lp + __rp) >> 1;
+
+				__build(__begin, __lp, __mid, __lson(__current_id));
+				__build(__begin, __mid + 1, __rp, __rson(__current_id));
+			}
+
+			void __modify(__id_type __id, __id_type __id_l, __id_type __id_r, __id_type __current_id, __vtype __val)
+			{
+				
+			}
+
+		public:
+
+			segment_tree() : __tree_size(__calc_size2(__n))
+			{
+				__tr.resize(__tree_size);
+				__tag.resize(__tree_size);
+			}
+
+			template<typename __iterator_t>
+			segment_tree(__iterator_t __begin)
+			{
+				__build(__begin, 1, __n, 1);
+			}
+
+			segment_tree(const segment_tree<__n, __vtype, __calc>& __seg)
+			{
+				__tr.assign(__seg.__tr.begin(), __seg.__tr.end());
+				__tag.assign(__seg.__tag.begin(), __seg.__tag.end());
+			}
+
+			~segment_tree() { }
+
+			void modify(__id_type __id, __vtype __val)
+
 	}
 	
+	/*
 	template<__id_type n, typename val_t, typename calc = plus<val_t> >
 	class segment_tree // Based on zkw's Segment Tree
 	{
@@ -101,6 +172,7 @@ namespace oitl
 			const val_t& query(__id_type __pos) { return __single_query(__pos); }
 			const val_t& query(__id_type __l, __id_type __r) { return __range_query(__l, __r); }
 	};
+	*/
 }
 
 #endif
