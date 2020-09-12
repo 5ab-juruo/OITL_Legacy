@@ -1,8 +1,8 @@
-#ifndef OITL_BINARY_INDEXED_TREE
-#define OITL_BINARY_INDEXED_TREE 1
+// OITL-Binary indexed tree
 
-#include "assets/oitl_basic.hpp"
-#include "assets/bad_assert.hpp"
+#ifndef _OITL_BINARY_INDEXED_TREE_LIB
+#define _OITL_BINARY_INDEXED_TREE_LIB 1
+
 #include "assets/binary_indexed_tree.hpp"
 
 #endif
