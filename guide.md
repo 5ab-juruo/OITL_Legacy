@@ -1,3 +1,5 @@
+[toc]
+
 # Olympiad in Informatics Template Library Using Guide | OI 标准库 使用指南
 
 ## Simpified Chinese | 简体中文版
@@ -8,7 +10,7 @@
 下面将会讲述不同库、类和函数的用法。
 
 注：所有的类和函数都是在 `oitl` 名字空间下的。
-### oitl/segment_tree
+### oitl/segment_tree (Not finished.)
 这个库里面有各种各样的线段树。
 #### class segment_tree | oitl/assets/segment_tree.hpp
 最基本的线段树，基于递归式线段树实现。
@@ -117,7 +119,7 @@
 
 求出从 `__lp` 到 `__rp` 里的第 `__rk` 大。
 
-### oitl/sparse_table
+### oitl/sparse_table (Not finished.)
 
 稀疏表（ST 表），一种高效的 RMQ 实现方案。
 
@@ -129,87 +131,15 @@
 - `typename __vtype`：存储值
 - `typename __calc`：区间运算类型
 
-#### class dynamic_graph/graph/static_graph | oitl/assets/graph.hpp
+#### class directed_graph / indirected_graph (Not finished.)
+### oitl/binary_indexed_tree (State 1/3)
+#### class binary_indexed_tree | oitl/assets/binary_indexed_tree.hpp
 
-定义：
+定义：`template<int _N, typename _Val_t, typename _Op> class binary_indexed_tree`
 
-- `template<dir is_directed, typename val_t> class dynamic_graph`
-- `template<int n, dir is_directed, typename val_t> class graph`
-- `template<int n, int m, dir is_directed, typename val_t> class static_graph`
-
-这三个类型的方法类似，只不过内存处理方式不同。
-
-- `dynamic_graph` 是点数不固定，边数不固定的空间分配方案。
-- `graph` 是点数固定，边数不固定的空间分配方案。
-- `static_graph` 是点数固定，边数也固定的空间分配方案。
-
-（这里的固定是指有上限）
-
-##### 不同的方法
-
-###### 对于 `dynamic_graph`
-
-> `void dynamic_graph<is_directed, val_t>::add_vertex()`
-
-添加一个节点。
-
-> `void dynamic_graph<is_directed, val_t>::set_vertex(__id_type __id_cnt)`
-
-设置节点数，若不足则添加，否则保留前 `id_cnt` 个。
-
-> `void dynamic_graph<is_directed, val_t>::clear_all()`
-
-清除所有边和节点。
-
-###### 对于有向图
-
-> `bool is_connected(__id_type __ida, __id_type __idb)`
-
-检测是否有从 `__ida` 号点到 `__idb` 号点是否有通路。
-
-> `bool is_strongly_connected(__id_type __ida, __id_type __idb)`
-
-检测从 `__ida` 到 `__idb` 是否有双向通路。
-
-> `bool is_connected()`
-
-检测整张图是否强连通，即任意两点之间都有双向通路。
-
-> `__id_type scc_count()`
-
-计算整张图的强连通分量数量。
-
-> `void compress()`
-
-强连通分量缩点。
-
-###### 对于无向图
-
-> `bool is_connected(__id_type __ida, __id_type __idb)`
-
-检测
-
-> `bool is_connected()`
-
-检测整张图是否连通。
-
-##### 相同的方法
-
-> `void add_edge(__id_type __s, __id_type __t, val_t __v)`
-
-加入一条从 `__s` 到 `__t` 的值为 `__v` 的边，若是无向图则加入无向边。
-
-> `void clear()`
-
-清除所有边。
-
-> `iterator begin(__id_type __id)`
-
-返回指向从 `__id` 号点出发的第一条边的迭代器。
-
-> `iterator end(__id_type __id)`
-
-返回指向从 `__id` 号点出发的末尾迭代器。
+- `int _N`：区间大小；
+- `typename _Val_t`：存储值类型；
+- `typename _Op`：运算。
 
 ## English | 英语版
 
