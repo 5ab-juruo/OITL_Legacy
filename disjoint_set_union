@@ -1,0 +1,6 @@
+#ifndef _OITL_DISJOINT_SET_UNION_LIB
+#define _OITL_DISJOINT_SET_UNION_LIB 1
+
+#include "./assets/disjoint_set_union.hpp"
+
+#endif
