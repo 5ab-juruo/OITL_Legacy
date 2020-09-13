@@ -22,12 +22,13 @@ namespace oitl
 		private:
 			
 			#if __cplusplus >= 201103L
-			std::array<value_type, _N> __bit;
+			std::array<value_type, _N + 1> __bit;
 			#else
-			value_type __bit[_N];
+			value_type __bit[_N + 1];
 			#endif 
 
 			operate_type __calc;
+			value_type __identity;
 
 			void _Add(const int __ptr, value_type __val)
 			{
@@ -43,7 +44,7 @@ namespace oitl
 			value_type _Get(const int __ptr) const
 			{
 				register int __i = __ptr;
-				value_type __ret;
+				value_type __ret = __identity;
 
 				while (__i > 0)
 				{
@@ -55,6 +56,16 @@ namespace oitl
 			}
 		
 		public:
+
+			binary_indexed_tree(value_type _Identity = value_type(0)) : __identity(_Identity)
+			{
+				#if __cplusplus >= 201103L
+				__bit.fill(__identity);
+				#else
+				for (register int __i = 0; __i < _N; ++__i)
+					__bit[__i] = __identity;
+				#endif
+			}
 
 			void modify(int __ptr, _Val_t __val)
 			{
