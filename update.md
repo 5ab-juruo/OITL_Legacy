@@ -1,31 +1,23 @@
-# Update Log
+# OITL Update Log
+It's the full update log of OITL.
 
-## v1.0
+## Indev (v0)
+In-DEV state. The first state of OITL Development. We would like to add as many classes and functions as we could.
+### Indev-0
+Indev-0, the first released version of OITL.
+#### Indev-0.0
+Added `binary_indexed_tree` into OITL. It means that OITL got its first class.
+#### Indev-0.1
+Fixed some bugs of `binary_indexed_tree`.
 
-Welcome using OITL to programming!
+Added `disjoint_set_union`.
+### Indev-1
+The second released version of OITL and the In-DEV state.
+#### Indev-1.0
+Renamed some functions.
 
-OITL is a source-open project which means you can join our development!
+- `disjoint_set_union::clear()` was renamed `disjoint_set_union::reset()`;
+- `disjoint_set_union::reset()` was renamed `disjoint_set_union::clear()`;
+- `disjoint_set_union::unite_sets()` was renamed `disjoint_set_union::unite()`.
 
-Only use GitHub and Pull-Request, you can make OITL better!
-
-p.s. `guide.md` may exists some other classes. It may show what I'll update next time (^_^).
-
----
-
-New features:
-
-Added `class segment_tree` !
-
-p.s. You shouldn't use the libraries that I didn't mentioned in the update log. These functions or classes are under construction, so they are really not stable. If you use it, you may meet some strange bugs.(Even Compilation Error ^_^)
-
-### Full update log in v1.0
-
-#### v1.0.0 Pre-test Upd_1
-
-Constructing.
-
-Started the reconstruction of recursive-segment_tree.
-
-#### v1.0.0 Pre-test Upd_0
-
-construct classes.
+Wrote Guides and Wikis and filled update logs.
