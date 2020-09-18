@@ -21,3 +21,7 @@ Renamed some functions.
 - `disjoint_set_union::unite_sets()` was renamed `disjoint_set_union::unite()`.
 
 Wrote Guides and Wikis and filled update logs.
+#### Indev-1.1
+Fixed the bug of `disjoint_set_union` about resizing.
+
+Added `sparse_table`(Not Tested, Wikis and guides will update after testing).
