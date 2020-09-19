@@ -15,7 +15,7 @@ namespace oitl
 		
 		public:
 			
-			std_error(const std::string &_s = "") : s("[OI Template Library] " + _s) { }
+			std_error(const std::string &_s = "") : s("[OITL] " + _s) { }
 			~std_error() { s.clear(); }
 			
 			const char* what() { return s.c_str(); }
@@ -32,7 +32,7 @@ namespace oitl
 	template<typename T>
 	void __oitl_range_assert(const T &a, const T &b)
 	{
-		__oitl_assert(a <= b, "Input not make a range.");
+		__oitl_assert(a <= b, "Input do not make a range.");
 	}
 	
 	// Check the range [l, r]
@@ -44,7 +44,7 @@ namespace oitl
 	
 	void __oitl_array_assert(const int& len, const int& id)
 	{
-		__oitl_assert(id >= 0 && len > id, "Visit out of array.");
+		__oitl_assert(id >= 0 && len > id, "Not a vaild index.");
 	}
 }
 

@@ -1,5 +1,5 @@
-#ifndef OITL_BASIC_HPP
-#define OITL_BASIC_HPP
+#ifndef _OITL_ASSETS_BASIC
+#define _OITL_ASSETS_BASIC 1
 
 #define OITL_UPD 20200309L
 

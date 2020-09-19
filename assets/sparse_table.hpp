@@ -26,18 +26,18 @@ namespace oitl
 
 				_Pow_tab()
 				{
-					int __lay = 0, __pw = 1;
+					int __lay = -1, __pw = 1;
 
 					for (register int __i = 0; __i < _N; ++__i)
 					{
-						__val[__i] = __lay;
-
 						if (__pw == __i)
 							++__lay, __pw <<= 1;
+						
+						__val[__i] = __lay;
 					}
 				}
 
-				int operator[](int id)
+				int operator[](int id) const
 				{
 					return __val[id];
 				}
@@ -67,25 +67,30 @@ namespace oitl
 			void refill(_Iterator __lp)
 			{
 				register int __cra = 1, __ptr = 0, __tar = 0;
+				_Iterator __rp = __lp;
 
-				__tab.push_back(vector(_N));
-				__tab[0].assign(__lp, __lp + _N);
+				__tab.clear();
+				__tab.push_back(std::vector<value_type>(_N));
+				
+				for (register int __i = 0; __i < _N; ++__i)
+					++__rp;
+				__tab[0].assign(__lp, __rp);
 
 				while (__tab[__ptr].size() > __cra)
 				{
 					++__ptr;
-					__tab.push_back(vector());
+					__tab.push_back(std::vector<value_type>());
 
 					for (register int __i = __cra; __i < __tab[__tar].size(); ++__i)
-						__tab[__ptr][__i] = __calc(__tab[__tar][__i-__cra], __tab[__tar][__i]);
-					
-					++__tar;
+						__tab[__ptr].push_back(__calc(__tab[__tar][__i-__cra], __tab[__tar][__i]));
+
+					++__tar, __cra <<= 1;
 				}
 			}
 
 			value_type query(int __lp, int __rp) const
 			{
-				return __calc(__tab[__ask[__rp-__lp]][__lp]
+				return __calc(__tab[__ask[__rp-__lp]][__lp],
 							  __tab[__ask[__rp-__lp]][__rp-(1<<__ask[__rp-__lp])]);
 			}
 	};
