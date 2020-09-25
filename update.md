@@ -25,3 +25,5 @@ Wrote Guides and Wikis and filled update logs.
 Fixed the bug of `disjoint_set_union` about resizing.
 
 Added `sparse_table`(Not Tested, Wikis and guides will update after testing).
+#### Indev-1.2
+Fixed some bugs of `sparse_table`. It can pass the test now.
