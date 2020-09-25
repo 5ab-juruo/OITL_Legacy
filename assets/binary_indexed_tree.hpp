@@ -57,7 +57,7 @@ namespace oitl
 		
 		public:
 
-			binary_indexed_tree(value_type _Identity = value_type(0)) : __identity(_Identity)
+			explicit binary_indexed_tree(value_type _Identity = value_type(0)) : __identity(_Identity)
 			{
 				#if __cplusplus >= 201103L
 				__bit.fill(__identity);

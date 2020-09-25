@@ -1,7 +1,6 @@
-#ifndef OITL_SPARSE_TABLE
-#define OITL_SPARSE_TABLE 1
+#ifndef _OITL_SPARSE_TABLE_LIB
+#define _OITL_SPARSE_TABLE_LIB 1
 
-#include "assets/oitl_basic.hpp"
 #include "assets/sparse_table.hpp"
 
 #endif

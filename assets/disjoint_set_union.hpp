@@ -21,7 +21,7 @@ namespace oitl
 		
 		public:
 
-			disjoint_set_union(int __siz = 0)
+			explicit disjoint_set_union(int __siz = 0)
 			{
 				__dsu.resize(__siz);
 				for (register int __i = 0; __i < __siz; ++__i)
@@ -30,14 +30,14 @@ namespace oitl
 		
 			bool empty() const { return __dsu.size() == 0; }
 			int size() const { return __dsu.size(); }
-			void reset() { __dsu.clear(); }
+			void clear() { __dsu.clear(); }
 
 			bool same_set(int __ap, int __bp)
 			{
 				return _Find_root(__ap) == _Find_root(__bp);
 			}
 
-			void unite_sets(int __ap, int __bp)
+			void unite(int __ap, int __bp)
 			{
 				if (same_set(__ap, __bp))
 					return;
@@ -51,7 +51,7 @@ namespace oitl
 				return __dsu.size() - 1;
 			}
 
-			void clear()
+			void reset()
 			{
 				for (register int __i = 0; __i < __dsu.size(); ++__i)
 					__dsu[__i] = __i;
@@ -65,7 +65,16 @@ namespace oitl
 						__dsu.push_back(__i);
 				}
 				else
+				{
+					for (register int __i = 0; __i < __siz; ++__i)
+						if (_Find_root(__i) >= __siz)
+						{
+							__dsu[_Find_root(__i)] = __i;
+							__dsu[__i] = __i;
+						}
+					
 					__dsu.resize(__siz);
+				}
 			}
 	};
 }
