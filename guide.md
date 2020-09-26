@@ -138,6 +138,8 @@
 无返回值。
 ## 稀疏表（ST 表）
 一种非常高效的 RMQ 数据结构，可以达到 O(n log n)-O(1) 的优秀复杂度。
+
+ST 表支持在常数时间内维护满足 a * a = a 的运算的区间 _和_。
 ### sparse_table
 不支持修改的普通 ST 表。
 
@@ -147,8 +149,38 @@
 - `class _Val_t`：存储类型；
 - `class _Op`：运算。
 
+#### 类型
+`sparse_table<_N, _Val_t, _Op>::value_type`：存储数据类型（aka. `_Val_t`）
+
+`sparse_table<_N, _Val_t, _Op>::operate_type`：RMQ 类型（aka. `_Op`）
 #### 成员函数
 ##### sparse_table
-定义：
+定义：`sparse_table<_N, _Val_t, _Op>::sparse_table()`。
 
+建立一个大小为 `_N` 的 ST 表。
+
+无参数。
+
+无返回值。
+##### refill
+定义：`template<class _Iterator> void sparse_table<_N, _Val_t, _Op>::refill(_Iterator lp)`。
+
+将 [lp,lp+n) 区间内的数作为 RMQ 区间。
+
+参数：
+
+- `template<class _Iterator> _Iterator lp`：区间左端点。
+
+无返回值。
+##### query
+定义：`value_type sparse_table<_N, _Val_t, _Op>::query(int lp, int rp)`。
+
+询问区间 _和_，即 RMQ。
+
+参数：
+
+- `int lp`：左端点；
+- `int rp`：右端点。
+
+返回值：询问答案。
 # Guides for OITL classes and functions
