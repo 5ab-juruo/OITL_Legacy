@@ -1,8 +1,0 @@
-#ifndef OITL_BINARY_SEARCH_TREE
-#define OITL_BINARY_SEARCH_TREE 1
-
-#include "assets/treap.hpp"
-#include "assets/splay_bst.hpp"
-#include "assets/rb_tree.hpp"
-
-#endif
